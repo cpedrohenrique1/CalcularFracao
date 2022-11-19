@@ -4,7 +4,7 @@
 
 class TestaFracao{
     private:
-        Fracao f;
+        Fracao f, f2;
     public:
         void menu();
 };
@@ -12,11 +12,9 @@ class TestaFracao{
 void TestaFracao::menu(){
     int opcao;
     int flag;
-    int resultado;
     int entrada;
 
     do{
-        try{
             do{
                 cout << "Escolha uma opcao:\n";
                 cout << "1 - Soma\n";
@@ -28,40 +26,46 @@ void TestaFracao::menu(){
                 cin >> opcao;
             }while (opcao <1 || opcao > 6);
 
-            cout << "Digite o numerador: ";
+            cout << "Digite o numerador fracao 1: ";
             cin >> entrada;
             f.setNumerador(entrada);
-            cout << "Digite o denominador: ";
+            cout << "Digite o denominador fracao 1: ";
             cin >> entrada;
             f.setDenominador(entrada);
 
+            cout << "Digite o numerador fracao 2: ";
+            cin >> entrada;
+            f2.setNumerador(entrada);
+            cout << "Digite o denominador fracao 2: ";
+            cin >> entrada;
+            f2.setDenominador(entrada);
+
             switch(opcao){
                 case 1:
-                    resultado = f.soma();
+                    f.soma(f2.getNumerador(), f2.getDenominador());
                     break;
                 case 2:
-                    resultado = f.subtrai();
+                    f.subtrai(f2.getNumerador(), f2.getDenominador());
                     break;
                 case 3:
-                    resultado = f.multiplica();
+                    f.multiplica(f2.getNumerador(), f2.getDenominador());
                     break;
                 case 4:
-                    resultado = f.divide();
+                    f.divide(f2.getNumerador(), f2.getDenominador());
                     break;
                 case 5:
-                    resultado = f.mdc();
+                    f.mdc();
                     break;
                 case 6:
-                    resultado = f.simplifica();
+                    f.simplifica();
                     break;
             }
 
-            cout << "Resultado: " << resultado << endl;
-        }
-
-        catch (int erro){
-            cout << "Erro: divisao por zero" << endl;
-        }
+            if (opcao == 5){
+                cout << "Maximo divisor comum: " << f.mdc() << endl;
+            }else{
+                cout << "Fracao: " << f.getNumerador() << '/' << f.getDenominador() << endl;
+            }
 
         cout << "digite 0 para encerrar: ";
         cin >> flag;
