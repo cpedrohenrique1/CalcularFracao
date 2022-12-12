@@ -63,7 +63,8 @@ void Fracao::soma(Fracao a, Fracao b)
 {
     if (a.getDenominador() == b.getDenominador())
     {
-        numerador = a.getNumerador() + a.getDenominador();
+        numerador = a.getNumerador() + b.getNumerador();
+        denominador = a.getDenominador();
     }
     else
     {
@@ -78,6 +79,7 @@ void Fracao::subtrai(Fracao a, Fracao b)
     if (a.getDenominador() == b.getDenominador())
     {
         numerador = a.getNumerador() - b.getNumerador();
+        denominador = a.getDenominador();
     }
     else
     {
